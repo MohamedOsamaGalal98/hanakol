@@ -194,7 +194,7 @@
             </div>
 
             <!-- Tab Menu Starts-->
-            <ul class="nav nav-tabs nav--tabs wow fadeInUp">
+            <ul class="nav nav-tab nav--tabs wow fadeInUp justify-content-center">
                @if(isset($landing_data['services_order_title_1'] ) || isset($landing_data['services_order_title_2'] ))
                <li>
                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#order-your-food">
@@ -205,7 +205,7 @@
                </li>
                @endif
 
-                @if(isset($landing_data['services_manage_restaurant_title_1'] ) || isset($landing_data['services_manage_restaurant_title_2'] ))
+                {{-- @if(isset($landing_data['services_manage_restaurant_title_1'] ) || isset($landing_data['services_manage_restaurant_title_2'] ))
                 <li>
                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#manage-restaurant">
                         <img  src="{{ dynamicAsset('public/assets/admin/img/manage_your_restaurant.png') }}"
@@ -223,7 +223,7 @@
 
                     </button>
                 </li>
-                @endif
+                @endif --}}
             </ul>
             <!-- Tab Menu Ends -->
 

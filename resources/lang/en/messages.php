@@ -5085,4 +5085,6 @@
   'The_restaurant_is_not_subscribed_or_subscription_has_expired' => 'The restaurant is not subscribed or subscription has expired',
   'Subscription Plan Added Successfully' => 'Subscription Plan Added Successfully',
   'failed_to_place_order' => 'Failed to place order',
+  'feature_status_updated' => 'Feature status updated',
+  'Delivery_section_updated_successfully' => 'Delivery section updated successfully',
 );
