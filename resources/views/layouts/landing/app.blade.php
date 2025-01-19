@@ -85,7 +85,7 @@
                             {{ translate('messages.home') }}
                         </a>
                     </li>
-                    @if ($landing_page_links['web_app_url_status'])
+                    {{-- @if ($landing_page_links['web_app_url_status'])
 
                     <li>
                         <a href="{{ $landing_page_links['web_app_url'] }}">
@@ -101,7 +101,7 @@
                             {{ translate('messages.browse_web') }}
                         </a>
                     </li>
-                    @endif
+                    @endif --}}
                     <li>
                         <a href="{{ route('about-us') }}"  class="@yield('about')">
                             <svg width="25" height="8" viewBox="0 0 25 8" fill="none"
@@ -180,7 +180,7 @@
                 @endif
 
 
-                @if ((isset($toggle_dm_registration)  && $toggle_dm_registration )|| (isset($toggle_restaurant_registration) && $toggle_restaurant_registration))
+                {{-- @if ((isset($toggle_dm_registration)  && $toggle_dm_registration )|| (isset($toggle_restaurant_registration) && $toggle_restaurant_registration))
                 <div class="position-relative">
                     <a class="dropdown--btn btn-base" href="javascript:void(0)">
                         <span>{{ translate('Join us') }}</span>
@@ -203,7 +203,7 @@
                         @endif
                     </ul>
                 </div>
-                @endif
+                @endif --}}
             </div>
         </div>
     </header>
