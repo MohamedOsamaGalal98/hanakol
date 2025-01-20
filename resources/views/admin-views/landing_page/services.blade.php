@@ -355,7 +355,7 @@
 </div>
 <br>
 <br>
-<div class="d-flex justify-content-between __gap-12px mb-3">
+{{-- <div class="d-flex justify-content-between __gap-12px mb-3">
     <h5 class="card-title d-flex align-items-center">
         <span class="card-header-icon mr-2"><i class="tio-settings-outlined"></i></span>
         {{translate('Manage_Restaurant_Tab')}}
@@ -455,54 +455,54 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            @forelse(json_decode($language) as $lang)
+            </div> --}}
+            {{-- @forelse(json_decode($language) as $lang)
             <?php
-                        if($services_manage_restaurant_title_1?->translations){
-                                $services_manage_restaurant_title_1_translate = [];
-                                foreach($services_manage_restaurant_title_1->translations as $t)
-                                {
-                                    if($t->locale == $lang && $t->key=='services_manage_restaurant_title_1'){
-                                        $services_manage_restaurant_title_1_translate[$lang]['value'] = $t->value;
-                                    }
-                                }
-                            }
-                        if($services_manage_restaurant_title_2?->translations){
-                                $services_manage_restaurant_title_2_translate = [];
-                                foreach($services_manage_restaurant_title_2->translations as $t)
-                                {
-                                    if($t->locale == $lang && $t->key=='services_manage_restaurant_title_2'){
-                                        $services_manage_restaurant_title_2_translate[$lang]['value'] = $t->value;
-                                    }
-                                }
-                            }
-                        if($services_manage_restaurant_description_1?->translations){
-                                $services_manage_restaurant_description_1_translate = [];
-                                foreach($services_manage_restaurant_description_1->translations as $t)
-                                {
-                                    if($t->locale == $lang && $t->key=='services_manage_restaurant_description_1'){
-                                        $services_manage_restaurant_description_1_translate[$lang]['value'] = $t->value;
-                                    }
-                                }
-                            }
-                        if($services_manage_restaurant_description_2?->translations){
-                                $services_manage_restaurant_description_2_translate = [];
-                                foreach($services_manage_restaurant_description_2->translations as $t)
-                                {
-                                    if($t->locale == $lang && $t->key=='services_manage_restaurant_description_2'){
-                                        $services_manage_restaurant_description_2_translate[$lang]['value'] = $t->value;
-                                    }
-                                }
-                            }
-                        if($services_manage_restaurant_button_name?->translations){
-                            $services_manage_restaurant_button_name_translate = [];
-                            foreach($services_manage_restaurant_button_name->translations as $t)
-                            {
-                                if($t->locale == $lang && $t->key=='services_manage_restaurant_button_name'){
-                                    $services_manage_restaurant_button_name_translate[$lang]['value'] = $t->value;
-                                }
-                            }
-                        }
+                        // if($services_manage_restaurant_title_1?->translations){
+                        //         $services_manage_restaurant_title_1_translate = [];
+                        //         foreach($services_manage_restaurant_title_1->translations as $t)
+                        //         {
+                        //             if($t->locale == $lang && $t->key=='services_manage_restaurant_title_1'){
+                        //                 $services_manage_restaurant_title_1_translate[$lang]['value'] = $t->value;
+                        //             }
+                        //         }
+                        //     }
+                        // if($services_manage_restaurant_title_2?->translations){
+                        //         $services_manage_restaurant_title_2_translate = [];
+                        //         foreach($services_manage_restaurant_title_2->translations as $t)
+                        //         {
+                        //             if($t->locale == $lang && $t->key=='services_manage_restaurant_title_2'){
+                        //                 $services_manage_restaurant_title_2_translate[$lang]['value'] = $t->value;
+                        //             }
+                        //         }
+                        //     }
+                        // if($services_manage_restaurant_description_1?->translations){
+                        //         $services_manage_restaurant_description_1_translate = [];
+                        //         foreach($services_manage_restaurant_description_1->translations as $t)
+                        //         {
+                        //             if($t->locale == $lang && $t->key=='services_manage_restaurant_description_1'){
+                        //                 $services_manage_restaurant_description_1_translate[$lang]['value'] = $t->value;
+                        //             }
+                        //         }
+                        //     }
+                        // if($services_manage_restaurant_description_2?->translations){
+                        //         $services_manage_restaurant_description_2_translate = [];
+                        //         foreach($services_manage_restaurant_description_2->translations as $t)
+                        //         {
+                        //             if($t->locale == $lang && $t->key=='services_manage_restaurant_description_2'){
+                        //                 $services_manage_restaurant_description_2_translate[$lang]['value'] = $t->value;
+                        //             }
+                        //         }
+                        //     }
+                        // if($services_manage_restaurant_button_name?->translations){
+                        //     $services_manage_restaurant_button_name_translate = [];
+                        //     foreach($services_manage_restaurant_button_name->translations as $t)
+                        //     {
+                        //         if($t->locale == $lang && $t->key=='services_manage_restaurant_button_name'){
+                        //             $services_manage_restaurant_button_name_translate[$lang]['value'] = $t->value;
+                        //         }
+                        //     }
+                        // }
                     ?>
             <input type="hidden" name="lang[]" value="{{$lang}}">
 
@@ -581,8 +581,8 @@
     </form>
 </div>
 <br>
-<br>
-<div class="d-flex justify-content-between __gap-12px mb-3">
+<br> --}}
+{{-- <div class="d-flex justify-content-between __gap-12px mb-3">
     <h5 class="card-title d-flex align-items-center">
         <span class="card-header-icon mr-2"><i class="tio-settings-outlined"></i></span>
         {{translate('messages.Manage_Delivery_Tab')}}
@@ -808,7 +808,7 @@
             </div>
         </div>
     </form>
-</div>
+</div> --}}
 
 </div>
 

@@ -213,7 +213,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="row g-3">
-                        <div class="col-md-12">
+                        {{-- <div class="col-md-12">
                             <label class="form-label">{{translate('Restaurant_Registration_Button')}}</label>
                             <div class="__bg-F8F9FC-card">
                                 <div class="form-group lang_form default-form">
@@ -290,7 +290,7 @@
                                     <input type="url" placeholder="{{translate('Ex:_https://www.apple.com/app-store/')}}" class="form-control h--45px" name="earn_money_restaurant_req_button_link" value="{{ $earn_money_restaurant_req_button_link  ?? '' }} ">
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-md-12">
                             <label class="form-label">{{translate('DeliveryMan_Registration_Button')}}</label>
                             <div class="__bg-F8F9FC-card">

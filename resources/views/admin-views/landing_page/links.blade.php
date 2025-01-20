@@ -97,7 +97,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 mt-3">
+                        {{-- <div class="col-md-6 mt-3">
                             <div class="__bg-F8F9FC-card">
                                 <div class="form-group mb-md-0">
                                     <div class="d-flex justify-content-between align-items-center mb-2">
@@ -127,7 +127,7 @@
                                     <input id="web_app_url" {{(isset($landing_page_links) && $landing_page_links['web_app_url_status'])?'':'readonly'}} type="text" value="{{isset($landing_page_links)?$landing_page_links['web_app_url']:''}}" placeholder="{{translate('Ex:_Order_now')}}" class="form-control h--45px" name="web_app_url" >
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                 </div>
 
                 <div class="form-group mb-0">

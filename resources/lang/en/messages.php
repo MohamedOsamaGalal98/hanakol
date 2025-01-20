@@ -911,7 +911,7 @@
   'Want_to_disable_the_Restaurant_Registration_button_here' => 'Want to disable the Restaurant Registration button here',
   'If_enabled,_everyone_can_see_the_Restaurant_Registration_button_on_the_landing_page' => 'If enabled  everyone can see the Restaurant Registration button on the landing page',
   'If_disabled,_Restaurant_Registration_button_will_be_hidden_from_the_landing_page' => 'If disabled  Restaurant Registration button will be hidden from the landing page',
-  'DeliveryMan_Registration_Button' => 'DeliveryMan Registration Button',
+  'DeliveryMan_Registration_Button' => 'Customer Registration Button',
   'Add_the_link/address_where_the_Deliveryman_Registration_button_will_redirect.' => 'Add the link/address where the Deliveryman Registration button will redirect.',
   'Want_to_enable_the_Deliveryman_Registration_button_here' => 'Want to enable the Deliveryman Registration button here',
   'Want_to_disable_the_Deliveryman_Registration_button_here' => 'Want to disable the Deliveryman Registration button here',
