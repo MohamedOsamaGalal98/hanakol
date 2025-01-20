@@ -531,7 +531,7 @@
                                     </a>
                                 </li>
 
-                                <li class="navbar-item {{ stripos(Request()->fullurl(), 'pending-list', 5 ) || Request::is('admin/restaurant/pending/list*') ||  Request::is('admin/restaurant/denied/list*') ? 'active' : '' }}">
+                                {{-- <li class="navbar-item {{ stripos(Request()->fullurl(), 'pending-list', 5 ) || Request::is('admin/restaurant/pending/list*') ||  Request::is('admin/restaurant/denied/list*') ? 'active' : '' }}">
                                     <a class="js-navbar-vertical-aside-menu-link nav-link"
                                         href="{{ route('admin.restaurant.pending') }}"
                                         title="{{ translate('messages.New_joining_request') }}">
@@ -539,7 +539,7 @@
                                         <span  class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{ translate('messages.New_joining_request') }}
                                         </span>
                                     </a>
-                                </li>
+                                </li> --}}
 
                                 <li
                                     class="nav-item {{ Request::is('admin/restaurant/bulk-import') ? 'active' : '' }}">
@@ -722,7 +722,7 @@
                         </li>
                     @endif
                     <!-- End Food -->
-                    <!-- DeliveryMan -->
+                    {{-- <!-- DeliveryMan -->
                     @if (\App\CentralLogics\Helpers::module_permission_check('deliveryman'))
                         <li class="nav-item">
                             <small class="nav-subtitle"
@@ -836,7 +836,7 @@
 
                             </ul>
                         </li>
-                    @endif
+                    @endif --}}
                     <!-- End DeliveryMan -->
                     @if (\App\CentralLogics\Helpers::module_permission_check('customerList'))
                         <!-- Custommer -->
@@ -1050,13 +1050,13 @@
                                         <span class="text-truncate">{{ translate('messages.restaurants') }}</span>
                                     </a>
                                 </li>
-                                    <li class="navbar-vertical-aside-has-menu {{ Request::is('admin/report/disbursement-report/delivery_man') ? 'active' : '' }}">
+                                    {{-- <li class="navbar-vertical-aside-has-menu {{ Request::is('admin/report/disbursement-report/delivery_man') ? 'active' : '' }}">
                                         <a class="nav-link " href="{{ route('admin.report.disbursement_report',  ['tab' => 'delivery_man']) }}"
                                            title="{{ translate('messages.delivery_men') }}">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">{{ translate('messages.delivery_men') }}</span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                               
                             </ul>
                         </li>
@@ -1334,14 +1334,14 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li class="nav-item  {{ Request::is('admin/login-url/login-page-setup*') ? 'active' : '' }}">
+                                {{-- <li class="nav-item  {{ Request::is('admin/login-url/login-page-setup*') ? 'active' : '' }}">
                                     <a class="nav-link " href="{{ route('admin.login_url.login_url_page') }}"
                                         title="{{ translate('messages.login_page_setup') }} ">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">{{ translate('messages.login_page_setup') }}
                                         </span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 @if (\App\CentralLogics\Helpers::get_mail_status('offline_payment_status'))
                                 <li class="nav-item {{ Request::is('admin/business-settings/offline*') ? 'active' : '' }}">
                                     <a class="nav-link " href="{{ route('admin.business-settings.offline') }}" title="{{ translate('messages.Offline_Payment_Setup') }}">
@@ -1365,9 +1365,9 @@
                         <li
                             class="navbar-vertical-aside-has-menu {{ Request::is('admin/business-settings/app-settings*') ? 'active' : '' }}">
                             <a class="nav-link " href="{{ route('admin.business-settings.app-settings') }}"
-                                title="{{ translate('messages.App_&_Web_Settings') }}">
+                                title="{{ translate('messages.App_Settings') }}">
                                 <span class="tio-android nav-icon"></span>
-                                <span class="text-truncate">{{ translate('messages.App_&_Web_Settings') }}</span>
+                                <span class="text-truncate">{{ translate('messages.App_Settings') }}</span>
                             </a>
                         </li>
 
@@ -1391,7 +1391,7 @@
                             </a>
                         </li>
 
-                            <li class="nav-item {{ Request::is('admin/react-landing-page*') ? 'active' : '' }}">
+                            {{-- <li class="nav-item {{ Request::is('admin/react-landing-page*') ? 'active' : '' }}">
                             <a class="nav-link"
                                 href="{{ route('admin.react_landing_page.react_header') }}"
                                 title="{{ translate('messages.React_landing_page') }} ">
@@ -1399,18 +1399,18 @@
                                 <span
                                     class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{ translate('messages.React_landing_page') }}</span>
                             </a>
-                        </li>
+                        </li> --}}
 
                         </ul>
                     </li>
 
-                        <li class="navbar-vertical-aside-has-menu {{ Request::is('admin/business-settings/react*') ? 'active' : '' }}">
+                        {{-- <li class="navbar-vertical-aside-has-menu {{ Request::is('admin/business-settings/react*') ? 'active' : '' }}">
                             <a class="nav-link " href="{{ route('admin.business-settings.react-setup') }}"
                                 title="{{ translate('messages.react_site') }}">
                                 <span class="tio-rear-window-defrost nav-icon"></span>
                                 <span class="text-truncate">{{ translate('messages.react_site') }}</span>
                             </a>
-                        </li>
+                        </li> --}}
 
 
                         <li class="navbar-vertical-aside-has-menu {{ Request::is('admin/business-settings/db-index') ? 'active' : '' }}">
@@ -1430,16 +1430,16 @@
                     <!-- End Business Settings -->
 
                 <!-- Business Section-->
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <small class="nav-subtitle"
                            title="{{ translate('messages.business_section') }}">{{ translate('messages.disbursement_management') }}</small>
                     <small class="tio-more-horizontal nav-subtitle-replacer"></small>
-                </li>
+                </li> --}}
                 <!-- account -->
-                @if (\App\CentralLogics\Helpers::module_permission_check('account'))
+                {{-- @if (\App\CentralLogics\Helpers::module_permission_check('account'))
                     <li
                         class="navbar-vertical-aside-has-menu {{ Request::is('admin/restaurant-disbursement*') ? 'active' : '' }}">
-                        <a class="js-navbar-vertical-aside-menu-link nav-link"
+                         <a class="js-navbar-vertical-aside-menu-link nav-link"
                            href="{{ route('admin.restaurant-disbursement.list', ['status' => 'all']) }}"
                            title="{{ translate('messages.restaurant_disbursement') }}">
                             <i class="tio-wallet-outlined nav-icon"></i>
@@ -1451,8 +1451,8 @@
 
                         </a>
                     </li>
-                @endif
-                @if (\App\CentralLogics\Helpers::module_permission_check('account'))
+                @endif  --}}
+                {{-- @if (\App\CentralLogics\Helpers::module_permission_check('account'))
                     <li
                         class="navbar-vertical-aside-has-menu {{ Request::is('admin/dm-disbursement*') ? 'active' : '' }}">
                         <a class="js-navbar-vertical-aside-menu-link nav-link"
@@ -1466,7 +1466,7 @@
                                             </span></span>
                         </a>
                     </li>
-                @endif
+                @endif --}}
 
 
                     <!-- Business Section-->
@@ -1477,7 +1477,7 @@
                     </li>
                     <!-- account -->
 
-                    @if (\App\CentralLogics\Helpers::module_permission_check('account'))
+                    {{-- @if (\App\CentralLogics\Helpers::module_permission_check('account'))
                         <li
                             class="navbar-vertical-aside-has-menu {{ Request::is('admin/account-transaction*') ? 'active' : '' }}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
@@ -1488,7 +1488,7 @@
                                     class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{ translate('messages.collect_cash') }}</span>
                             </a>
                         </li>
-                    @endif
+                    @endif --}}
                     <!-- End account -->
                     <!-- withdraw -->
                     @if (\App\CentralLogics\Helpers::module_permission_check('withdraw_list'))
@@ -1537,7 +1537,7 @@
 
                     {{-- @if(1) --}}
                     <!-- Dashboards -->
-                    <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/system-addon')?'show active':''}}">
+                    {{-- <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/system-addon')?'show active':''}}">
                         <a class="js-navbar-vertical-aside-menu-link nav-link"
                            href="{{route('admin.business-settings.system-addon.index')}}" title="{{translate('messages.system_addons')}}">
                             <i class="tio-add-circle-outlined nav-icon"></i>
@@ -1545,7 +1545,7 @@
                             {{translate('messages.system_addons')}}
                         </span>
                         </a>
-                    </li>
+                    </li> --}}
                     <!-- End Dashboards -->
                     {{-- @endif --}}
 

@@ -14,9 +14,9 @@
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('admin/business-settings/business-setup/restaurant') ?'active':'' }}" href="{{ route('admin.business-settings.business-setup',  ['tab' => 'restaurant']) }}"  aria-disabled="true">{{translate('messages.restaurant')}}</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link {{ Request::is('admin/business-settings/business-setup/deliveryman') ?'active':'' }}" href="{{ route('admin.business-settings.business-setup',  ['tab' => 'deliveryman']) }}"  aria-disabled="true">{{translate('messages.delivery_man')}}</a>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('admin/business-settings/business-setup/customer') ?'active':'' }}" href="{{ route('admin.business-settings.business-setup',  ['tab' => 'customer']) }}"  aria-disabled="true">{{translate('messages.customers')}}</a>
             </li>
@@ -27,9 +27,9 @@
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('admin/business-settings/business-setup/landing-page') ?'active':'' }}" href="{{ route('admin.business-settings.business-setup',  ['tab' => 'landing-page']) }}"  aria-disabled="true">{{translate('messages.landing_page')}}</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link {{ Request::is('admin/business-settings/business-setup/disbursement') ?'active':'' }}" href="{{ route('admin.business-settings.business-setup',  ['tab' => 'disbursement']) }}"  aria-disabled="true">{{translate('messages.disbursement')}}</a>
-            </li>
+            </li> --}}
         </ul>
         <!-- End Nav -->
     </div>

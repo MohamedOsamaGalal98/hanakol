@@ -47,7 +47,8 @@
                             <div class="col-10">
                                 <div class="form-group">
                                     <label class="input-label text--black" for="exampleFormControlInput1"> {{translate('messages.Free_trial_period')}} </label>
-                                    <input type="text" value="{{ round($trial_period,1) }}" name="free_trial_period" class="form-control h--45px" placeholder="{{ translate('Ex:_90_Days') }}" min="1" max="999" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 3)" step="1" required>
+                                    {{-- <input type="text" value="{{ round($trial_period,1) }}" name="free_trial_period" class="form-control h--45px" placeholder="{{ translate('Ex:_90_Days') }}" min="1" max="999" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 3)" step="1" required> --}}
+                                    <input type="text" value="{{ round((float) $trial_period, 1) }}" name="free_trial_period" class="form-control h--45px" placeholder="{{ translate('Ex:_90_Days') }}" min="1" max="999" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 3)" step="1" required>
                                 </div>
                             </div>
                             <div class="col-2">

@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',translate('messages.app_&_web_settings'))
+@section('title',translate('messages.app_settings'))
 
 @section('content')
     <div class="content container-fluid">
@@ -11,7 +11,7 @@
                     <img src="{{dynamicAsset('public/assets/admin/img/app.png')}}" class="w--26" alt="">
                 </span>
                 <span>
-                    {{translate('messages.app_&_web_settings')}}
+                    {{translate('messages.app_settings')}}
                 </span>
             </h1>
             <div class="text--primary-2 d-flex flex-wrap align-items-center" type="button" data-toggle="modal" data-target="#how-it-works">
@@ -262,7 +262,7 @@
         </form>
 
 
-        <form action="{{route('admin.business-settings.app-settings')}}" method="post"
+        {{-- <form action="{{route('admin.business-settings.app-settings')}}" method="post"
         enctype="multipart/form-data">
         @csrf
             <h5 class="card-title mb-3 pt-4">
@@ -341,10 +341,10 @@
                     </div>
                 </div>
             </div>
-        </form>
+        </form> --}}
 
 
-        <form action="{{route('admin.business-settings.app-settings')}}" method="post"
+        {{-- <form action="{{route('admin.business-settings.app-settings')}}" method="post"
         enctype="multipart/form-data">
         @csrf
             <h5 class="card-title mb-3 pt-4">
@@ -424,7 +424,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        </form> --}}
 
     </div>
 

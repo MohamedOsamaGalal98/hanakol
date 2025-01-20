@@ -46,17 +46,17 @@ class BusinessSettingsController extends Controller
                 ->orWhere('key', 'like', 'ref_earning_%')->get();
             $data = array_column($data->toArray(), 'value', 'key');
             return view('admin-views.business-settings.customer-index', compact('data'));
-        } else if ($tab == 'deliveryman') {
-            return view('admin-views.business-settings.deliveryman-index');
-        } else if ($tab == 'order') {
+        // } else if ($tab == 'deliveryman') {
+        //     return view('admin-views.business-settings.deliveryman-index');
+         } else if ($tab == 'order') {
             $reasons = OrderCancelReason::latest()->paginate(config('default_pagination'));
             return view('admin-views.business-settings.order-index', compact('reasons'));
         } else if ($tab == 'restaurant') {
             return view('admin-views.business-settings.restaurant-index');
         } else if ($tab == 'landing-page') {
             return view('admin-views.business-settings.landing-index');
-        } else if ($tab == 'disbursement') {
-            return view('admin-views.business-settings.disbursement-index');
+        // } else if ($tab == 'disbursement') {
+        //     return view('admin-views.business-settings.disbursement-index');
         }
     }
 

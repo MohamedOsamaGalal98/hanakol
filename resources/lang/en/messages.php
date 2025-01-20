@@ -165,7 +165,7 @@
   '3rd_Party' => '3rd Party',
   'Firebase_Notification' => 'Firebase Notification',
   'login_page_setup' => 'Login page setup',
-  'App_&_Web_Settings' => 'App & Web Settings',
+  'App_Settings' => 'App Settings',
   'landing_page_settings' => 'Landing page settings',
   'Admin_landing_page' => 'Admin landing page',
   'React_landing_page' => 'React landing page',

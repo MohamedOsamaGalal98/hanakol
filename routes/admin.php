@@ -18,9 +18,9 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::get('/', 'DashboardController@dashboard')->name('dashboard');
         Route::get('landing-page', 'SystemController@landing_page')->name('landing-page');
 
-        Route::resource('account-transaction', 'AccountTransactionController')->middleware('module:account');
-        Route::get('export-account-transaction', 'AccountTransactionController@export_account_transaction')->name('export-account-transaction');
-        Route::post('search-account-transaction', 'AccountTransactionController@search_account_transaction')->name('search-account-transaction');
+        // Route::resource('account-transaction', 'AccountTransactionController')->middleware('module:account');
+        // Route::get('export-account-transaction', 'AccountTransactionController@export_account_transaction')->name('export-account-transaction');
+        // Route::post('search-account-transaction', 'AccountTransactionController@search_account_transaction')->name('search-account-transaction');
 
         Route::resource('provide-deliveryman-earnings', 'ProvideDMEarningController')->middleware('module:provide_dm_earning');
         Route::get('export-deliveryman-earnings', 'ProvideDMEarningController@dm_earning_list_export')->name('export-deliveryman-earning');
@@ -171,7 +171,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
                 Route::delete('clear-discount/{restaurant}', 'VendorController@cleardiscount')->name('clear-discount');
                 // Route::get('view/{restaurant}', 'VendorController@view')->name('view_tab');
                 Route::get('view/{restaurant}/{tab?}/{sub_tab?}', 'VendorController@view')->name('view');
-                Route::get('pending/list', 'VendorController@pending')->name('pending');
+                // Route::get('pending/list', 'VendorController@pending')->name('pending');
                 Route::get('denied/list', 'VendorController@denied')->name('denied');
                 // restaurant Transcation Search
                 // Route::post('transcation/search/', 'VendorController@rest_transcation_search')->name('rest_transcation_search');
@@ -223,9 +223,9 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
 
         });
 
-        Route::get('addon/system-addons', function (){
-            return to_route('admin.system-addon.index');
-        })->name('addon.index');
+        // Route::get('addon/system-addons', function (){
+        //     return to_route('admin.system-addon.index');
+        // })->name('addon.index');
 
         Route::group(['prefix' => 'addon', 'as' => 'addon.', 'middleware' => ['module:addon']], function () {
             Route::get('add-new', 'AddOnController@index')->name('add-new');
@@ -357,8 +357,8 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::post('update-restaurant', 'BusinessSettingsController@update_restaurant')->name('update-restaurant');
             Route::get('config-setup', 'BusinessSettingsController@config_setup')->name('config-setup');
             Route::post('config-update', 'BusinessSettingsController@config_update')->name('config-update');
-            Route::get('react-setup', 'BusinessSettingsController@react_setup')->name('react-setup');
-            Route::post('react-update', 'BusinessSettingsController@react_update')->name('react-update');
+            // Route::get('react-setup', 'BusinessSettingsController@react_setup')->name('react-setup');
+            // Route::post('react-update', 'BusinessSettingsController@react_update')->name('react-update');
             Route::post('update-setup', 'BusinessSettingsController@business_setup')->name('update-setup');
             Route::get('theme-settings', 'BusinessSettingsController@theme_settings')->name('theme-settings');
             Route::POST('theme-settings-update', 'BusinessSettingsController@update_theme_settings')->name('theme-settings-update');
@@ -501,33 +501,33 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::get('links', 'LandingPageController@links')->name('links');
             Route::get('backgroung-color', 'LandingPageController@backgroung_color')->name('backgroung_color');
         });
-        Route::group(['prefix' => 'react-landing-page', 'as' => 'react_landing_page.', 'middleware' => ['module:settings', 'actch']], function () {
-            Route::post('landing-page-settings/{tab}', 'LandingPageController@update_react_landing_page_settings')->name('settings');
+        // Route::group(['prefix' => 'react-landing-page', 'as' => 'react_landing_page.', 'middleware' => ['module:settings', 'actch']], function () {
+        //     Route::post('landing-page-settings/{tab}', 'LandingPageController@update_react_landing_page_settings')->name('settings');
 
-            Route::get('header', 'LandingPageController@react_header')->name('react_header');
-            Route::get('fixed-data', 'LandingPageController@react_fixed_data')->name('react_fixed_data');
-            // services
-            Route::get('services', 'LandingPageController@react_services')->name('react_services');
-            Route::post('service-store/', 'LandingPageController@react_service_store')->name('service_store');
-            Route::get('service-status/{id}/{status}', 'LandingPageController@react_service_status')->name('service_status');
-            Route::get('service/edit/{id}', 'LandingPageController@react_service_edit')->name('service_edit');
-            Route::post('service/update/{id}', 'LandingPageController@react_service_update')->name('service_update');
-            Route::delete('service/delete/{service}', 'LandingPageController@react_service_destroy')->name('service_delete');
-            Route::get('service-export', 'LandingPageController@service_export')->name('service_export');
-            // services end
-            // promotional_banner
-            Route::get('promotional-banner', 'LandingPageController@react_promotional_banner')->name('promotional_banner');
-            Route::post('promotional-banner-store/', 'LandingPageController@react_promotional_banner_store')->name('promotional_banner_store');
-            Route::get('promotional-banner-status/{id}/{status}', 'LandingPageController@react_promotional_banner_status')->name('promotional_banner_status');
-            Route::get('promotional-banner/edit/{id}', 'LandingPageController@react_promotional_banner_edit')->name('promotional_banner_edit');
-            Route::post('promotional-banner/update/{id}', 'LandingPageController@react_promotional_banner_update')->name('promotional_banner_update');
-            Route::delete('promotional-banner/delete/{react_promotional_banner}', 'LandingPageController@react_promotional_banner_destroy')->name('promotional_banner_delete');
-            Route::get('promotional-banner-export', 'LandingPageController@react_promotional_banners_export')->name('react_promotional_banners_export');
-            // promotional_banner end
+        //     // Route::get('header', 'LandingPageController@react_header')->name('react_header');
+        //     Route::get('fixed-data', 'LandingPageController@react_fixed_data')->name('react_fixed_data');
+        //     // services
+        //     Route::get('services', 'LandingPageController@react_services')->name('react_services');
+        //     Route::post('service-store/', 'LandingPageController@react_service_store')->name('service_store');
+        //     Route::get('service-status/{id}/{status}', 'LandingPageController@react_service_status')->name('service_status');
+        //     Route::get('service/edit/{id}', 'LandingPageController@react_service_edit')->name('service_edit');
+        //     Route::post('service/update/{id}', 'LandingPageController@react_service_update')->name('service_update');
+        //     Route::delete('service/delete/{service}', 'LandingPageController@react_service_destroy')->name('service_delete');
+        //     Route::get('service-export', 'LandingPageController@service_export')->name('service_export');
+        //     // services end
+        //     // promotional_banner
+        //     Route::get('promotional-banner', 'LandingPageController@react_promotional_banner')->name('promotional_banner');
+        //     Route::post('promotional-banner-store/', 'LandingPageController@react_promotional_banner_store')->name('promotional_banner_store');
+        //     Route::get('promotional-banner-status/{id}/{status}', 'LandingPageController@react_promotional_banner_status')->name('promotional_banner_status');
+        //     Route::get('promotional-banner/edit/{id}', 'LandingPageController@react_promotional_banner_edit')->name('promotional_banner_edit');
+        //     Route::post('promotional-banner/update/{id}', 'LandingPageController@react_promotional_banner_update')->name('promotional_banner_update');
+        //     Route::delete('promotional-banner/delete/{react_promotional_banner}', 'LandingPageController@react_promotional_banner_destroy')->name('promotional_banner_delete');
+        //     Route::get('promotional-banner-export', 'LandingPageController@react_promotional_banners_export')->name('react_promotional_banners_export');
+        //     // promotional_banner end
 
-            Route::get('registration-scetion', 'LandingPageController@registration_scetion')->name('registration_scetion');
-            Route::get('download-apps', 'LandingPageController@download_apps')->name('download_apps');
-        });
+        //     Route::get('registration-scetion', 'LandingPageController@registration_scetion')->name('registration_scetion');
+        //     Route::get('download-apps', 'LandingPageController@download_apps')->name('download_apps');
+        // });
 
         Route::group(['prefix' => 'message', 'as' => 'message.'], function () {
             Route::get('list', 'ConversationController@list')->name('list');
@@ -535,50 +535,50 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::get('view/{conversation_id}/{user_id}', 'ConversationController@view')->name('view');
         });
 
-        Route::group(['prefix' => 'delivery-man', 'as' => 'delivery-man.'], function () {
-            Route::get('get-deliverymen', 'DeliveryManController@get_deliverymen')->name('get-deliverymen');
-            Route::get('get-account-data/{deliveryman}', 'DeliveryManController@get_account_data')->name('restaurantfilter');
-            Route::group(['middleware' => ['module:deliveryman']], function () {
-                Route::get('add', 'DeliveryManController@index')->name('add');
-                Route::post('store', 'DeliveryManController@store')->name('store');
-                Route::get('list', 'DeliveryManController@list')->name('list');
-                Route::get('preview/{id}/{tab?}', 'DeliveryManController@preview')->name('preview');
-                Route::get('status/{id}/{status}', 'DeliveryManController@status')->name('status');
-                Route::get('earning/{id}/{status}', 'DeliveryManController@earning')->name('earning');
-                Route::get('update-application/{id}/{status}', 'DeliveryManController@update_application')->name('application');
-                Route::get('edit/{id}', 'DeliveryManController@edit')->name('edit');
-                Route::post('update/{id}', 'DeliveryManController@update')->name('update');
-                Route::delete('delete/{id}', 'DeliveryManController@delete')->name('delete');
-                // Route::post('search', 'DeliveryManController@search')->name('search');
-                Route::get('export-delivery-man', 'DeliveryManController@dm_list_export')->name('export-delivery-man');
-                Route::get('pending/list', 'DeliveryManController@pending')->name('pending');
-                Route::get('denied/list', 'DeliveryManController@denied')->name('denied');
-                Route::get('earning-export', 'DeliveryManController@earning_export')->name('earning-export');
-                Route::get('review-export', 'DeliveryManController@review_export')->name('review-export');
-                Route::get('disbursement-export/{id}/{type}', 'DeliveryManController@disbursement_export')->name('disbursement-export');
-                Route::get('pending-delivery-man-view/{id}', 'DeliveryManController@pending_dm_view')->name('pending_dm_view');
+        // Route::group(['prefix' => 'delivery-man', 'as' => 'delivery-man.'], function () {
+        //     Route::get('get-deliverymen', 'DeliveryManController@get_deliverymen')->name('get-deliverymen');
+        //     Route::get('get-account-data/{deliveryman}', 'DeliveryManController@get_account_data')->name('restaurantfilter');
+        //     Route::group(['middleware' => ['module:deliveryman']], function () {
+        //         Route::get('add', 'DeliveryManController@index')->name('add');
+        //         Route::post('store', 'DeliveryManController@store')->name('store');
+        //         Route::get('list', 'DeliveryManController@list')->name('list');
+        //         Route::get('preview/{id}/{tab?}', 'DeliveryManController@preview')->name('preview');
+        //         Route::get('status/{id}/{status}', 'DeliveryManController@status')->name('status');
+        //         Route::get('earning/{id}/{status}', 'DeliveryManController@earning')->name('earning');
+        //         Route::get('update-application/{id}/{status}', 'DeliveryManController@update_application')->name('application');
+        //         Route::get('edit/{id}', 'DeliveryManController@edit')->name('edit');
+        //         Route::post('update/{id}', 'DeliveryManController@update')->name('update');
+        //         Route::delete('delete/{id}', 'DeliveryManController@delete')->name('delete');
+        //         // Route::post('search', 'DeliveryManController@search')->name('search');
+        //         Route::get('export-delivery-man', 'DeliveryManController@dm_list_export')->name('export-delivery-man');
+        //         Route::get('pending/list', 'DeliveryManController@pending')->name('pending');
+        //         Route::get('denied/list', 'DeliveryManController@denied')->name('denied');
+        //         Route::get('earning-export', 'DeliveryManController@earning_export')->name('earning-export');
+        //         Route::get('review-export', 'DeliveryManController@review_export')->name('review-export');
+        //         Route::get('disbursement-export/{id}/{type}', 'DeliveryManController@disbursement_export')->name('disbursement-export');
+        //         Route::get('pending-delivery-man-view/{id}', 'DeliveryManController@pending_dm_view')->name('pending_dm_view');
 
-                Route::group(['prefix' => 'reviews', 'as' => 'reviews.'], function () {
-                    Route::get('list', 'DeliveryManController@reviews_list')->name('list');
-                    Route::get('status/{id}/{status}', 'DeliveryManController@reviews_status')->name('status');
-                    Route::get('export', 'DeliveryManController@reviews_export')->name('export');
+        //         Route::group(['prefix' => 'reviews', 'as' => 'reviews.'], function () {
+        //             Route::get('list', 'DeliveryManController@reviews_list')->name('list');
+        //             Route::get('status/{id}/{status}', 'DeliveryManController@reviews_status')->name('status');
+        //             Route::get('export', 'DeliveryManController@reviews_export')->name('export');
 
-                });
+        //         });
 
-                //incentive
-                Route::get('incentive', 'DeliveryManController@pending_incentives')->name('incentive');
-                Route::get('incentive-history', 'DeliveryManController@get_incentives')->name('incentive-history');
-                Route::put('incentive', 'DeliveryManController@update_incentive_status');
-                Route::post('incentive_all', 'DeliveryManController@update_all_incentive_status')->name('update-incentive');
-                 //bonus
-                Route::get('bonus', 'DeliveryManController@get_bonus')->name('bonus');
-                Route::post('bonus', 'DeliveryManController@add_bonus');
-                // message
-                Route::get('message/{conversation_id}/{user_id}', 'DeliveryManController@conversation_view')->name('message-view');
-                Route::get('{user_id}/message/list', 'DeliveryManController@conversation_list')->name('message-list');
-                Route::get('messages/details', 'DeliveryManController@get_conversation_list')->name('message-list-search');
-            });
-        });
+        //         //incentive
+        //         Route::get('incentive', 'DeliveryManController@pending_incentives')->name('incentive');
+        //         Route::get('incentive-history', 'DeliveryManController@get_incentives')->name('incentive-history');
+        //         Route::put('incentive', 'DeliveryManController@update_incentive_status');
+        //         Route::post('incentive_all', 'DeliveryManController@update_all_incentive_status')->name('update-incentive');
+        //          //bonus
+        //         Route::get('bonus', 'DeliveryManController@get_bonus')->name('bonus');
+        //         Route::post('bonus', 'DeliveryManController@add_bonus');
+        //         // message
+        //         Route::get('message/{conversation_id}/{user_id}', 'DeliveryManController@conversation_view')->name('message-view');
+        //         Route::get('{user_id}/message/list', 'DeliveryManController@conversation_list')->name('message-list');
+        //         Route::get('messages/details', 'DeliveryManController@get_conversation_list')->name('message-list-search');
+        //     });
+        // });
 
         //Pos system
         Route::group(['prefix' => 'pos', 'as' => 'pos.'], function () {
@@ -752,18 +752,18 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::post('send-mail/{id}', 'ContactMessages@send_mail')->name('send-mail');
         });
         // ,'middleware'=>['module:vehicle']
-        Route::group(['prefix' => 'vehicle', 'as' => 'vehicle.', 'middleware' => ['module:deliveryman']], function () {
-            // Route::post('contact-store', 'ContactMessages@store')->name('store');
-            Route::get('list', 'VehicleController@list')->name('list');
-            Route::get('add', 'VehicleController@create')->name('create');
-            Route::get('status/{vehicle}/{status}', 'VehicleController@status')->name('status');
-            Route::get('edit/{vehicle}', 'VehicleController@edit')->name('edit');
-            Route::post('store', 'VehicleController@store')->name('store');
-            Route::post('update/{vehicle}', 'VehicleController@update')->name('update');
-            Route::delete('delete', 'VehicleController@destroy')->name('delete');
-            Route::get('view/{vehicle}', 'VehicleController@view')->name('view');
+        // Route::group(['prefix' => 'vehicle', 'as' => 'vehicle.', 'middleware' => ['module:deliveryman']], function () {
+        //     // Route::post('contact-store', 'ContactMessages@store')->name('store');
+        //     Route::get('list', 'VehicleController@list')->name('list');
+        //     Route::get('add', 'VehicleController@create')->name('create');
+        //     Route::get('status/{vehicle}/{status}', 'VehicleController@status')->name('status');
+        //     Route::get('edit/{vehicle}', 'VehicleController@edit')->name('edit');
+        //     Route::post('store', 'VehicleController@store')->name('store');
+        //     Route::post('update/{vehicle}', 'VehicleController@update')->name('update');
+        //     Route::delete('delete', 'VehicleController@destroy')->name('delete');
+        //     Route::get('view/{vehicle}', 'VehicleController@view')->name('view');
 
-        });
+        // });
         Route::group(['middleware' => ['module:order']], function () {
             Route::get('order-cancel-reasons/status/{id}/{status}', 'OrderCancelReasonController@status')->name('order-cancel-reasons.status');
             Route::get('order-cancel-reasons/setDefault/{id}/{is_default}', 'OrderCancelReasonController@setDefault')->name('order-cancel-reasons.setDefault');
@@ -781,14 +781,14 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
                 Route::delete('subscription/pause_log_delete/{subscription}', 'OrderSubscriptionController@pause_log_delete')->name('pause_log_delete');
             });
         });
-        Route::group(['prefix' => 'shift', 'as' => 'shift.'], function () {
-            Route::get('/', 'ShiftController@list')->name('list');
-            Route::post('store', 'ShiftController@store')->name('store');
-            Route::get('edit/{id}', 'ShiftController@edit')->name('edit');
-            Route::post('update', 'ShiftController@update')->name('update');
-            Route::delete('delete/{shift}', 'ShiftController@destroy')->name('delete');
-            Route::get('status/{id}/{status}', 'ShiftController@status')->name('status');
-        });
+        // Route::group(['prefix' => 'shift', 'as' => 'shift.'], function () {
+        //     Route::get('/', 'ShiftController@list')->name('list');
+        //     Route::post('store', 'ShiftController@store')->name('store');
+        //     Route::get('edit/{id}', 'ShiftController@edit')->name('edit');
+        //     Route::post('update', 'ShiftController@update')->name('update');
+        //     Route::delete('delete/{shift}', 'ShiftController@destroy')->name('delete');
+        //     Route::get('status/{id}/{status}', 'ShiftController@status')->name('status');
+        // });
 
 
         Route::group(['prefix' => 'business-settings', 'as' => 'language.','middleware' => ['module:settings']], function () {
@@ -814,10 +814,10 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::put('refund/order_refund_rejection/','OrderController@order_refund_rejection')->name('order_refund_rejection');
         });
 
-        Route::group(['prefix' => 'login-url', 'as' => 'login_url.', 'middleware' => ['module:settings']], function () {
-            Route::get('login-page-setup', 'BusinessSettingsController@login_url_page')->name('login_url_page');
-            Route::post('login-page-setup/update', 'BusinessSettingsController@login_url_page_update')->name('login_url_page_update');
-        });
+        // Route::group(['prefix' => 'login-url', 'as' => 'login_url.', 'middleware' => ['module:settings']], function () {
+        //     Route::get('login-page-setup', 'BusinessSettingsController@login_url_page')->name('login_url_page');
+        //     Route::post('login-page-setup/update', 'BusinessSettingsController@login_url_page_update')->name('login_url_page_update');
+        // });
 
         Route::get('refund/{status}', 'OrderController@list')->name('refund.refund_attr')->middleware('module:order');
         Route::post('remove_image', 'BusinessSettingsController@remove_image')->name('remove_image');

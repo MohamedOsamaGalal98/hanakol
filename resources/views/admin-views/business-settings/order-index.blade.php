@@ -265,7 +265,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6 col-lg-4">
+                                        {{-- <div class="col-sm-6 col-lg-4">
                                             @php($canceled_by_restaurant = \App\Models\BusinessSetting::where('key', 'canceled_by_restaurant')->first())
                                             @php($canceled_by_restaurant = $canceled_by_restaurant ? $canceled_by_restaurant->value : 0)
                                             <div class="form-group mb-0">
@@ -291,8 +291,8 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 col-lg-4">
+                                        </div> --}}
+                                        {{-- <div class="col-sm-6 col-lg-4">
                                             @php($canceled_by_deliveryman = \App\Models\BusinessSetting::where('key', 'canceled_by_deliveryman')->first())
                                             @php($canceled_by_deliveryman = $canceled_by_deliveryman ? $canceled_by_deliveryman->value : 0)
                                             <div class="form-group mb-0">
@@ -318,9 +318,9 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
-                                        <div class="col-sm-6 col-lg-4">
+                                        {{-- <div class="col-sm-6 col-lg-4">
                                             @php($order_confirmation_model = \App\Models\BusinessSetting::where('key', 'order_confirmation_model')->first())
                                             @php($order_confirmation_model = $order_confirmation_model ? $order_confirmation_model?->value : 'deliveryman')
                                             <div class="form-group mb-0">
@@ -346,7 +346,7 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="col-sm-6 col-lg-4">
                                             @php($schedule_order_slot_duration = \App\Models\BusinessSetting::where('key', 'schedule_order_slot_duration')->first())
