@@ -2,8 +2,8 @@
     <div class="row gy-1 justify-content-between align-items-center">
         <div class="col-md-auto">
             <p class="font-size-sm mb-0">
-                &copy; {{\App\Models\BusinessSetting::where(['key'=>'business_name'])->first()->value}}. <span
-                    class="d-none d-sm-inline-block">{{\App\Models\BusinessSetting::where(['key'=>'footer_text'])->first()->value}}</span>
+                &copy; {{\App\Models\BusinessSetting::where(['key'=>'footer_text'])->first()->value}} <span
+                    class="d-none d-sm-inline-block">{{\App\Models\BusinessSetting::where(['key'=>'business_name'])->first()->value}}</span>
             </p>
         </div>
         <div class="col-md-auto">

@@ -408,8 +408,8 @@
                         </div>
                     </div>
                     <div class="copyright text-center mt-3">
-                        {{ \App\CentralLogics\Helpers::get_settings('footer_text') }}
-                        {{ translate('By') }} {{ \App\CentralLogics\Helpers::get_settings('business_name') }}
+                        {{ \App\CentralLogics\Helpers::get_settings('business_name') }}
+                        {{ translate('By') }} {{ \App\CentralLogics\Helpers::get_settings('footer_text') }}
                     </div>
                 </div>
             </div>
