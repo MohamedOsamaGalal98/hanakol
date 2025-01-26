@@ -1034,7 +1034,7 @@ $max_processing_time = $order->restaurant?explode('-', $order->restaurant['deliv
                                     @if ($order->order_status == 'refunded' )
 
                                     @else
-                                    <button class="btn btn--primary btn--sm route-alert"
+                                    <button class="btn btn--primary btn--sm route_alert"
                                     data-url="{{ route('admin.order.status', ['id' => $order['id'],
                                     'order_status' => 'refunded']) }}" data-message="{{ translate('messages.you_want_to_refund_this_order', ['amount' => $refund_amount . ' ' . \App\CentralLogics\Helpers::currency_code()]) }}" data-title="{{ translate('messages.are_you_sure_want_to_refund') }}"><i
                                         class="tio-money"></i> <span class="ml-1">{{ translate('messages.Refund') }}</span> </button>
@@ -1130,25 +1130,25 @@ $max_processing_time = $order->restaurant?explode('-', $order->restaurant['deliv
                                                                 @endif
                                                                     @php($order_delivery_verification = (bool) \App\Models\BusinessSetting::where(['key' => 'order_delivery_verification'])->first()->value)
                                                                     <div class="dropdown-menu text-capitalize" aria-labelledby="dropdownMenuButton">
-                                                                        <a class="dropdown-item route-alert {{ $order['order_status'] == 'pending' ? 'active' : '' }}"
+                                                                        <a class="dropdown-item route_alert {{ $order['order_status'] == 'pending' ? 'active' : '' }}"
                                                                             data-url="{{ route('admin.order.status', ['id' => $order['id'], 'order_status' => 'pending']) }}" data-message="{{ translate('Change_status_to_pending_?') }}"
                                                                             href="javascript:">{{ translate('messages.pending') }}</a>
-                                                                        <a class="dropdown-item route-alert {{ $order['order_status'] == 'confirmed' ? 'active' : '' }}"
+                                                                        <a class="dropdown-item route_alert {{ $order['order_status'] == 'confirmed' ? 'active' : '' }}"
                                                                             data-url="{{ route('admin.order.status', ['id' => $order['id'], 'order_status' => 'confirmed']) }}" data-message="{{ translate('Change_status_to_confirmed_?') }}"
                                                                             href="javascript:">{{ translate('messages.confirmed') }}</a>
 
-                                                                        <a class="dropdown-item route-alert {{ $order['order_status'] == 'processing' ? 'active' : '' }}"
+                                                                        <a class="dropdown-item route_alert {{ $order['order_status'] == 'processing' ? 'active' : '' }}"
                                                                             data-url="{{ route('admin.order.status', ['id' => $order['id'], 'order_status' => 'processing']) }}" data-message="{{ translate('Change_status_to_processing_?') }}" data-title="{{ translate('Are_you_sure?') }}" data-processing="{{ $max_processing_time }}"
                                                                             href="javascript:">
                                                                             {{ translate('messages.processing') }}</a>
 
-                                                                        <a class="dropdown-item route-alert {{ $order['order_status'] == 'handover' ? 'active' : '' }}"
+                                                                        <a class="dropdown-item route_alert {{ $order['order_status'] == 'handover' ? 'active' : '' }}"
                                                                             data-url="{{ route('admin.order.status', ['id' => $order['id'], 'order_status' => 'handover']) }}" data-message="{{ translate('Change_status_to_handover_?') }}"
                                                                             href="javascript:">{{ translate('messages.handover') }}</a>
-                                                                        <a class="dropdown-item route-alert {{ $order['order_status'] == 'picked_up' ? 'active' : '' }}"
+                                                                        <a class="dropdown-item route_alert {{ $order['order_status'] == 'picked_up' ? 'active' : '' }}"
                                                                             data-url="{{ route('admin.order.status', ['id' => $order['id'], 'order_status' => 'picked_up']) }}" data-message="{{ translate('Change_status_to_out_for_delivery_?') }}"
                                                                             href="javascript:">{{ translate('messages.out_for_delivery') }}</a>
-                                                                        <a class="dropdown-item route-alert {{ $order['order_status'] == 'delivered' ? 'active' : '' }}"
+                                                                        <a class="dropdown-item route_alert {{ $order['order_status'] == 'delivered' ? 'active' : '' }}"
                                                                             data-url="{{ route('admin.order.status', ['id' => $order['id'], 'order_status' => 'delivered']) }}" data-message="{{ translate('Change_status_to_delivered_(payment_status_will_be_paid_if_not)_?') }}"
                                                                             href="javascript:">{{ translate('messages.delivered') }}</a>
                                                                         <a class="dropdown-item cancelled_status {{ $order['order_status'] == 'canceled' ? 'active' : '' }}"
@@ -1990,9 +1990,9 @@ $max_processing_time = $order->restaurant?explode('-', $order->restaurant['deliv
                             <button type="button" class="btn btn--danger btn-outline-danger offline_payment_cancelation_note" data-toggle="modal" data-target="#offline_payment_cancelation_note" data-id="{{ $order['id'] }}" class="btn btn--reset">{{translate('Payment_Didn’t_Receive')}}</button>
                             @elseif ($order?->offline_payments->status == 'denied')
                             <button type="button" class="btn btn-danger btn-outline-danger mb-2 cancelled_status">{{translate('Cancel_Order')}}</button>
-                                <button type="button" data-url="{{ route('admin.order.offline_payment', [ 'id' => $order['id'], 'verify' => 'switched_to_cod', ]) }}" data-message="{{ translate('messages.Make_the_payment_verified_for_this_order') }}"  class="btn btn-primary btn-outline-primary mb-2 route-alert">{{translate('Continue_with_COD')}}</button>
+                                <button type="button" data-url="{{ route('admin.order.offline_payment', [ 'id' => $order['id'], 'verify' => 'switched_to_cod', ]) }}" data-message="{{ translate('messages.Make_the_payment_verified_for_this_order') }}"  class="btn btn-primary btn-outline-primary mb-2 route_alert">{{translate('Continue_with_COD')}}</button>
                             @endif
-                            <button type="button" data-url="{{ route('admin.order.offline_payment', [ 'id' => $order['id'], 'verify' => 'yes', ]) }}" data-message="{{ translate('messages.Make_the_payment_verified_for_this_order') }}" class="btn btn-primary mb-2 route-alert">{{translate('Yes,_Payment_Received')}}</button>
+                            <button type="button" data-url="{{ route('admin.order.offline_payment', [ 'id' => $order['id'], 'verify' => 'yes', ]) }}" data-message="{{ translate('messages.Make_the_payment_verified_for_this_order') }}" class="btn btn-primary mb-2 route_alert">{{translate('Yes,_Payment_Received')}}</button>
                         </div>
                         @endif
                     </div>
