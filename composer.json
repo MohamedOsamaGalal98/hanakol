@@ -13,6 +13,8 @@
         "beyondcode/laravel-websockets": "^1.14",
         "brian2694/laravel-toastr": "^5.54",
         "doctrine/dbal": "^3.5",
+        "firebase/php-jwt": "^6.11",
+        "google/apiclient": "^2.15",
         "gregwar/captcha": "^1.1",
         "guzzlehttp/guzzle": "^7.8",
         "intervention/image": "^2.5",

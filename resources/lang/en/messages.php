@@ -5087,4 +5087,6 @@
   'failed_to_place_order' => 'Failed to place order',
   'feature_status_updated' => 'Feature status updated',
   'Delivery_section_updated_successfully' => 'Delivery section updated successfully',
+  'messages' => 'Messages',
+  'The password must contain at least one letter.' => 'The password must contain at least one letter.',
 );

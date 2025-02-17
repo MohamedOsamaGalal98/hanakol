@@ -33,7 +33,7 @@
                         <select name="zone_id" class="form-control js-select2-custom set-filter"
                             data-url="{{ url()->full() }}" data-filter="zone_id" id="zone">
                             <option value="all">{{ translate('messages.All_Zones') }}</option>
-                            @foreach (\App\Models\Zone::orderBy('name')->get(['id','name']) as $z)
+                            @foreach (\App\Models\Zone::orderBy('name')->get(['id', 'name']) as $z)
                                 <option value="{{ $z['id'] }}"
                                     {{ isset($zone) && $zone->id == $z['id'] ? 'selected' : '' }}>
                                     {{ $z['name'] }}
@@ -76,13 +76,13 @@
                         <div class="col-sm-6 col-md-3">
                             <input type="date" name="from" id="from_date" class="form-control"
                                 placeholder="{{ translate('Start_Date') }}"
-                                value={{ $from ? $from  : '' }} required>
+                                value={{ $from ? $from : '' }} required>
                         </div>
                         <div class="col-sm-6 col-md-3">
 
                             <input type="date" name="to" id="to_date" class="form-control"
                                 placeholder="{{ translate('End_Date') }}"
-                                value={{ $to ? $to  : '' }} required>
+                                value={{ $to ? $to : '' }} required>
 
                         </div>
                     @endif
@@ -264,7 +264,7 @@
                             <th class="border-0">{{ translate('messages.admin_discount') }}</th>
                             <th class="border-0">{{ translate('messages.restaurant_discount') }}</th>
                             <th class="border-0">{{ translate('messages.admin_commission') }}</th>
-                            <th class="border-0">{{ \App\CentralLogics\Helpers::get_business_data('additional_charge_name')??translate('messages.additional_charge') }}</th>
+                            <th class="border-0">{{ \App\CentralLogics\Helpers::get_business_data('additional_charge_name') ?? translate('messages.additional_charge') }}</th>
                             <th class="min-w-140 text-capitalize">{{ translate('commision_on_delivery_charge') }}</th>
                             <th class="min-w-140 text-capitalize">{{ translate('admin_net_income') }}</th>
                             <th class="min-w-140 text-capitalize">{{ translate('restaurant_net_income') }}</th>
@@ -276,6 +276,7 @@
                     </thead>
                     <tbody id="set-rows">
                         @foreach ($order_transactions as $k => $ot)
+                        @if ($ot->order)
                             <tr>
                                 <td>{{ $k + $order_transactions->firstItem() }}</td>
                                     <td><a
@@ -283,7 +284,7 @@
                                     </td>
                                 <td  class="text-capitalize">
                                     @if($ot->order->restaurant)
-                                        {{Str::limit($ot->order->restaurant->name,25,'...')}}
+                                        {{Str::limit($ot->order->restaurant->name, 25, '...')}}
                                     @endif
                                 </td>
                                 <td class="white-space-nowrap">
@@ -293,7 +294,7 @@
                                             <strong>{{ $ot->order->customer['f_name'] . ' ' . $ot->order->customer['l_name'] }}</strong>
                                         </a>
                                     @elseif($ot->order->is_guest)
-                                        @php($customer_details = json_decode($ot->order['delivery_address'],true))
+                                        @php($customer_details = json_decode($ot->order['delivery_address'], true))
                                         <strong>{{$customer_details['contact_person_name']}}</strong>
                                         <div>{{$customer_details['contact_person_number']}}</div>
                                     @else
@@ -301,12 +302,13 @@
                                     @endif
                                 </td>
                                 <?php
-                                $discount_by_admin = 0;
-                                    if($ot->order->discount_on_product_by == 'admin'){
-                                        $discount_by_admin = $ot->order['restaurant_discount_amount'];
-                                    };
+        $discount_by_admin = 0;
+        if ($ot->order->discount_on_product_by == 'admin') {
+            $discount_by_admin = $ot->order['restaurant_discount_amount'];
+        }
+        ;
                                 ?>
-                                <td class="white-space-nowrap">{{ \App\CentralLogics\Helpers::format_currency($ot->order['order_amount'] - $ot->additional_charge  -  $ot->order['dm_tips']-$ot->order['delivery_charge'] - $ot['tax'] + $ot->order['coupon_discount_amount'] + $ot->order['restaurant_discount_amount']) }}</td>
+                                <td class="white-space-nowrap">{{ \App\CentralLogics\Helpers::format_currency($ot->order['order_amount'] - $ot->additional_charge - $ot->order['dm_tips'] - $ot->order['delivery_charge'] - $ot['tax'] + $ot->order['coupon_discount_amount'] + $ot->order['restaurant_discount_amount']) }}</td>
                                 <td class="white-space-nowrap">{{ \App\CentralLogics\Helpers::format_currency($ot->order->details->sum('discount_on_food')) }}</td>
                                 <td class="white-space-nowrap">{{ \App\CentralLogics\Helpers::format_currency($ot->order['coupon_discount_amount']) }}</td>
                                 <td class="white-space-nowrap">{{ \App\CentralLogics\Helpers::number_format_short($ot->order['coupon_discount_amount'] + $ot->order['restaurant_discount_amount']) }}</td>
@@ -315,11 +317,11 @@
                                 <td class="white-space-nowrap">{{ \App\CentralLogics\Helpers::format_currency($ot->order_amount) }}</td>
                                 <td class="white-space-nowrap">{{ \App\CentralLogics\Helpers::format_currency($ot->admin_expense) }}</td>
                                 <td class="white-space-nowrap">{{ \App\CentralLogics\Helpers::format_currency($ot->discount_amount_by_restaurant) }}</td>
-                                <td class="white-space-nowrap">{{ \App\CentralLogics\Helpers::format_currency($ot->admin_commission   - $ot->additional_charge  ) }}</td>
+                                <td class="white-space-nowrap">{{ \App\CentralLogics\Helpers::format_currency($ot->admin_commission - $ot->additional_charge) }}</td>
                                 <td class="white-space-nowrap">{{ \App\CentralLogics\Helpers::format_currency(($ot->additional_charge)) }}</td>
 
                                 <td class="white-space-nowrap">{{ \App\CentralLogics\Helpers::format_currency($ot->delivery_fee_comission) }}</td>
-                                <td class="white-space-nowrap">{{ \App\CentralLogics\Helpers::format_currency($ot->admin_commission + $ot->delivery_fee_comission ) }}</td>
+                                <td class="white-space-nowrap">{{ \App\CentralLogics\Helpers::format_currency($ot->admin_commission + $ot->delivery_fee_comission) }}</td>
                                 <td class="white-space-nowrap">{{ \App\CentralLogics\Helpers::format_currency($ot->restaurant_amount - $ot->tax) }}</td>
                                 @if ($ot->received_by == 'admin')
                                     <td class="text-capitalize white-space-nowrap">{{ translate('messages.admin') }}</td>
@@ -363,12 +365,13 @@
 
                                 <td>
                                     <div class="btn--container justify-content-center">
-                                        <a class="btn btn-outline-success square-btn btn-sm mr-1 action-btn"  href="{{route('admin.report.generate-statement',[$ot['id']])}}">
+                                        <a class="btn btn-outline-success square-btn btn-sm mr-1 action-btn"  href="{{route('admin.report.generate-statement', [$ot['id']])}}">
                                             <i class="tio-download-to"></i>
                                         </a>
                                     </div>
                                 </td>
                             </tr>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>

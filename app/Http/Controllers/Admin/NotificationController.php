@@ -11,6 +11,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PushNotificationExport;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 class NotificationController extends Controller
 {
@@ -18,14 +19,14 @@ class NotificationController extends Controller
     {
         $key = explode(' ', $request['search']);
         $notifications = Notification::with('zone')->latest()
-        ->when(isset($key), function ($q) use ($key){
-            $q->where(function ($q) use ($key) {
-                foreach ($key as $value) {
-                    $q->orWhere('title', 'like', "%{$value}%");
-                }
-            });
-        })
-        ->paginate(config('default_pagination'));
+            ->when(isset($key), function ($q) use ($key) {
+                $q->where(function ($q) use ($key) {
+                    foreach ($key as $value) {
+                        $q->orWhere('title', 'like', "%{$value}%");
+                    }
+                });
+            })
+            ->paginate(config('default_pagination'));
         return view('admin-views.notification.index', compact('notifications'));
     }
 
@@ -38,7 +39,7 @@ class NotificationController extends Controller
             'notification_title' => 'required|max:191',
             'description' => 'required|max:1000',
             'tergat' => 'required',
-            'zone'=>'required',
+            'zone' => 'required',
             'image' => 'nullable|max:2048',
         ], [
             'notification_title.required' => 'Title is required!',
@@ -49,7 +50,7 @@ class NotificationController extends Controller
         }
 
         if ($request->has('image')) {
-            $image_name = Helpers::upload(dir:'notification/', format:'png', image: $request->file('image'));
+            $image_name = Helpers::upload(dir: 'notification/', format: 'png', image: $request->file('image'));
         } else {
             $image_name = null;
         }
@@ -58,27 +59,26 @@ class NotificationController extends Controller
         $notification->title = $request->notification_title;
         $notification->description = $request->description;
         $notification->image = $image_name;
-        $notification->tergat= $request->tergat;
+        $notification->tergat = $request->tergat;
         $notification->status = 1;
-        $notification->zone_id = $request->zone=='all'?null:$request->zone;
+        $notification->zone_id = $request->zone == 'all' ? null : $request->zone;
         $notification->save();
 
-        $topic_all_zone=[
-            'customer'=>'all_zone_customer',
-            'deliveryman'=>'all_zone_delivery_man',
-            'restaurant'=>'all_zone_restaurant',
+        $topic_all_zone = [
+            'customer' => 'all_zone_customer',
+            'deliveryman' => 'all_zone_delivery_man',
+            'restaurant' => 'all_zone_restaurant',
         ];
 
-        $topic_zone_wise=[
-            'customer'=>'zone_'.$request->zone.'_customer',
-            'deliveryman'=>'zone_'.$request->zone.'_delivery_man',
-            'restaurant'=>'zone_'.$request->zone.'_restaurant',
+        $topic_zone_wise = [
+            'customer' => 'zone_' . $request->zone . '_customer',
+            'deliveryman' => 'zone_' . $request->zone . '_delivery_man',
+            'restaurant' => 'zone_' . $request->zone . '_restaurant',
         ];
-        $topic = $request->zone == 'all'?$topic_all_zone[$request->tergat]:$topic_zone_wise[$request->tergat];
+        $topic = $request->zone == 'all' ? $topic_all_zone[$request->tergat] : $topic_zone_wise[$request->tergat];
 
-        if($request->has('image'))
-        {
-            $notification->image = url('/').'/storage/app/public/notification/'.$image_name;
+        if ($request->has('image')) {
+            $notification->image = url('/') . '/storage/app/public/notification/' . $image_name;
         }
 
         try {
@@ -113,7 +113,7 @@ class NotificationController extends Controller
         $notification = Notification::findOrFail($id);
 
         if ($request->has('image')) {
-            $image_name = Helpers::update(dir:'notification/', old_image: $notification->image, format: 'png', image:$request->file('image'));
+            $image_name = Helpers::update(dir: 'notification/', old_image: $notification->image, format: 'png', image: $request->file('image'));
         } else {
             $image_name = $notification['image'];
         }
@@ -121,26 +121,26 @@ class NotificationController extends Controller
         $notification->title = $request->notification_title;
         $notification->description = $request->description;
         $notification->image = $image_name;
-        $notification->tergat= $request->tergat;
-        $notification->zone_id = $request->zone=='all'?null:$request->zone;
+        $notification->tergat = $request->tergat;
+        $notification->zone_id = $request->zone == 'all' ? null : $request->zone;
         $notification->updated_at = now();
         $notification->save();
 
-        $topic_all_zone=[
-            'customer'=>'all_zone_customer',
-            'deliveryman'=>'all_zone_delivery_man',
-            'restaurant'=>'all_zone_restaurant',
+        $topic_all_zone = [
+            'customer' => 'all_zone_customer',
+            'deliveryman' => 'all_zone_delivery_man',
+            'restaurant' => 'all_zone_restaurant',
         ];
 
-        $topic_zone_wise=[
-            'customer'=>'zone_'.$request->zone.'_customer',
-            'deliveryman'=>'zone_'.$request->zone.'_delivery_man',
-            'restaurant'=>'zone_'.$request->zone.'_restaurant',
+        $topic_zone_wise = [
+            'customer' => 'zone_' . $request->zone . '_customer',
+            'deliveryman' => 'zone_' . $request->zone . '_delivery_man',
+            'restaurant' => 'zone_' . $request->zone . '_restaurant',
         ];
-        $topic = $request->zone == 'all'?$topic_all_zone[$request->tergat]:$topic_zone_wise[$request->tergat];
-            if($image_name){
-                $notification->image = url('/').'/storage/app/public/notification/'.$image_name;
-            }
+        $topic = $request->zone == 'all' ? $topic_all_zone[$request->tergat] : $topic_zone_wise[$request->tergat];
+        if ($image_name) {
+            $notification->image = url('/') . '/storage/app/public/notification/' . $image_name;
+        }
 
         try {
             Helpers::send_push_notif_to_topic($notification, $topic, 'general');
@@ -172,31 +172,30 @@ class NotificationController extends Controller
         return back();
     }
 
-    public function export(Request $request){
-        try{
+    public function export(Request $request)
+    {
+        try {
             $key = explode(' ', $request['search']);
-            $Notification =  Notification::
-                when(isset($key ), function ($q) use ($key){
-                    $q->where(function ($q) use ($key) {
-                        foreach ($key as $value) {
-                            $q->orWhere('title', 'like', "%{$value}%");
-                        }
-                    });
-                })->latest()
-            ->latest()->get();
-            $data=[
-                'data' =>$Notification,
-                'search' =>$request['search'] ?? null
+            $Notification =  Notification::when(isset($key), function ($q) use ($key) {
+                $q->where(function ($q) use ($key) {
+                    foreach ($key as $value) {
+                        $q->orWhere('title', 'like', "%{$value}%");
+                    }
+                });
+            })->latest()
+                ->latest()->get();
+            $data = [
+                'data' => $Notification,
+                'search' => $request['search'] ?? null
             ];
-            if($request->type == 'csv'){
+            if ($request->type == 'csv') {
                 return Excel::download(new PushNotificationExport($data), 'PushNotification.csv');
             }
             return Excel::download(new PushNotificationExport($data), 'PushNotification.xlsx');
-        }  catch(\Exception $e)
-            {
-                Toastr::error("line___{$e->getLine()}",$e->getMessage());
-                info(["line___{$e->getLine()}",$e->getMessage()]);
-                return back();
-            }
+        } catch (\Exception $e) {
+            Toastr::error("line___{$e->getLine()}", $e->getMessage());
+            info(["line___{$e->getLine()}", $e->getMessage()]);
+            return back();
+        }
     }
 }

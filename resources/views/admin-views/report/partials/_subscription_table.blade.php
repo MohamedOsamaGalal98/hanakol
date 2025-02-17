@@ -7,6 +7,7 @@
         <td>
             {{ $transcation->created_at->format('d M Y h:i A') }}
         </td>
+        @if($transcation->resturant)
         <td>
             <a href="{{ route('admin.restaurant.view', $transcation->restaurant->id) }}" alt="view restaurant"
                 class="table-rest-info">
@@ -15,6 +16,7 @@
                 </h5>
             </a>
         </td>
+        @endif
         <td>
             {{ Str::limit($transcation->package->package_name, 20, '...') }}
         </td>

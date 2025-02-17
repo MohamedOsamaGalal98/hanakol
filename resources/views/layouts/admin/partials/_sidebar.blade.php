@@ -488,7 +488,7 @@
                         </li>
                     @endif
                     @if (\App\CentralLogics\Helpers::module_permission_check('restaurant'))
-                    <li class="navbar-vertical-aside-has-menu {{ Request::is('admin/cuisine/add') ? 'active' : '' }}">
+                    {{-- <li class="navbar-vertical-aside-has-menu {{ Request::is('admin/cuisine/add') ? 'active' : '' }}">
                         <a class="js-navbar-vertical-aside-menu-link nav-link"
                             href="{{ route('admin.cuisine.add') }}"
                             title="{{ translate('messages.cuisine') }}">
@@ -496,7 +496,7 @@
                             <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
                                 {{ translate('messages.cuisine') }}
                         </a>
-                    </li>
+                    </li> --}}
 
                         <li class="navbar-vertical-aside-has-menu {{ Request::is('admin/restaurant*') && !Request::is('admin/restaurant/withdraw_list') ? 'active' : '' }}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:"
@@ -1413,7 +1413,7 @@
                         </li> --}}
 
 
-                        <li class="navbar-vertical-aside-has-menu {{ Request::is('admin/business-settings/db-index') ? 'active' : '' }}">
+                        {{-- <li class="navbar-vertical-aside-has-menu {{ Request::is('admin/business-settings/db-index') ? 'active' : '' }}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                 href="{{ route('admin.business-settings.db-index') }}"
                                 title="{{ translate('messages.clean_database') }}">
@@ -1422,7 +1422,7 @@
                                     {{ translate('messages.clean_database') }}
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
 
                     <!-- End web & adpp Settings -->
 
